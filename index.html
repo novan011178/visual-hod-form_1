@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input Data Reject Visual Kontrol</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Form Input Data Reject</h1>
+            <p>Visual Control HOD - Quality Control System TIV KLT</p>
+        </div>
+        
+        <div class="form-container">
+            <div id="successMessage" class="success-message">
+                ✅ Data berhasil disimpan ke database!
+            </div>
+            
+            <div id="errorMessage" class="error-message">
+                ❌ Terjadi kesalahan. Silakan coba lagi.
+            </div>
+            
+            <form id="rejectForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal <span class="required">*</span></label>
+                        <input type="date" id="tanggal" name="tanggal" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jam">Jam Input Data <span class="required">*</span></label>
+                        <select id="jam" name="jam" required>
+                            <option value="">-- Pilih Jam --</option>
+                            <option value="06:00">06:00</option>
+                            <option value="06:30">06:30</option>
+                            <option value="07:00">07:00</option>
+                            <option value="07:30">07:30</option>
+                            <option value="08:00">08:00</option>
+                            <option value="08:30">08:30</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                            <option value="17:00">17:00</option>
+                            <option value="17:30">17:30</option>
+                            <option value="18:00">18:00</option>
+                            <option value="18:30">18:30</option>
+                            <option value="19:00">19:00</option>
+                            <option value="19:30">19:30</option>
+                            <option value="20:00">20:00</option>
+                            <option value="20:30">20:30</option>
+                            <option value="21:00">21:00</option>
+                            <option value="21:30">21:30</option>
+                            <option value="22:00">22:00</option>
+                            <option value="22:30">22:30</option>
+                            <option value="23:00">23:00</option>
+                            <option value="23:30">23:30</option>
+                            <option value="00:00">00:00</option>
+                            <option value="00:30">00:30</option>
+                            <option value="01:00">01:00</option>
+                            <option value="01:30">01:30</option>
+                            <option value="02:00">02:00</option>
+                            <option value="02:30">02:30</option>
+                            <option value="03:00">03:00</option>
+                            <option value="03:30">03:30</option>
+                            <option value="04:00">04:00</option>
+                            <option value="04:30">04:30</option>
+                            <option value="05:00">05:00</option>
+                            <option value="05:30">05:30</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="line">Line Produksi <span class="required">*</span></label>
+                        <select id="line" name="line" required>
+                            <option value="">-- Pilih Line --</option>
+                            <option value="Line R.Bardi">Line R.Bardi</option>
+                            <option value="Line Cap Snap">Line Cap Snap</option>
+                            <option value="Line Neptune">Line Neptune</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="shift">Shift <span class="required">*</span></label>
+                        <select id="shift" name="shift" required>
+                            <option value="">-- Pilih Shift --</option>
+                            <option value="Shift 1 (06:00-14:00)">Shift 1 (06:00-14:00)</option>
+                            <option value="Shift 2 (15:00-22:00)">Shift 2 (15:00-22:00)</option>
+                            <option value="Shift 3 (23:00-06:00)">Shift 3 (23:00-06:00)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Reject Visual Kosong Section -->
+                <div class="reject-section">
+                    <div class="section-header" onclick="toggleRejectSection('kosong')">
+                        <h3 class="section-title">📦 Reject Visual Kosong</h3>
+                        <span class="toggle-icon" id="iconKosong">▼</span>
+                    </div>
+                    <div class="checkbox-container" id="containerKosong">
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolBau" name="rejectKosong" value="Botol Bau">
+                                <label for="botolBau">Botol Bau</label>
+                                <input type="number" id="jumlahBotolBau" name="jumlahBotolBau" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="kotorDalam" name="rejectKosong" value="Kotor Dalam">
+                                <label for="kotorDalam">Kotor Dalam</label>
+                                <input type="number" id="jumlahKotorDalam" name="jumlahKotorDalam" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="lumutRingan" name="rejectKosong" value="Lumut Ringan">
+                                <label for="lumutRingan">Lumut Ringan</label>
+                                <input type="number" id="jumlahLumutRingan" name="jumlahLumutRingan" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="lumutBerat" name="rejectKosong" value="Lumut Berat">
+                                <label for="lumutBerat">Lumut Berat</label>
+                                <input type="number" id="jumlahLumutBerat" name="jumlahLumutBerat" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolAfkirRB" name="rejectKosong" value="Botol Afkir RB">
+                                <label for="botolAfkirRB">Botol Afkir RB</label>
+                                <input type="number" id="jumlahBotolAfkirRB" name="jumlahBotolAfkirRB" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolAfkirRD" name="rejectKosong" value="Botol Afkir RD">
+                                <label for="botolAfkirRD">Botol Afkir RD</label>
+                                <input type="number" id="jumlahBotolAfkirRD" name="jumlahBotolAfkirRD" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolAfkirRM" name="rejectKosong" value="Botol Afkir RM">
+                                <label for="botolAfkirRM">Botol Afkir RM</label>
+                                <input type="number" id="jumlahBotolAfkirRM" name="jumlahBotolAfkirRM" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolBuram" name="rejectKosong" value="Botol Buram">
+                                <label for="botolBuram">Botol Buram</label>
+                                <input type="number" id="jumlahBotolBuram" name="jumlahBotolBuram" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolRetak" name="rejectKosong" value="Botol Retak > 4cm">
+                                <label for="botolRetak">Botol Retak > 4cm</label>
+                                <input type="number" id="jumlahBotolRetak" name="jumlahBotolRetak" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="bendaAsing" name="rejectKosong" value="Benda Asing < 3cm">
+                                <label for="bendaAsing">Benda Asing < 3cm</label>
+                                <input type="number" id="jumlahBendaAsing" name="jumlahBendaAsing" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="labelRusak" name="rejectKosong" value="Label Rusak">
+                                <label for="labelRusak">Label Rusak</label>
+                                <input type="number" id="jumlahLabelRusak" name="jumlahLabelRusak" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="kotorBadan" name="rejectKosong" value="Kotor Badan">
+                                <label for="kotorBadan">Kotor Badan</label>
+                                <input type="number" id="jumlahKotorBadan" name="jumlahKotorBadan" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolNoda" name="rejectKosong" value="Botol Noda Cat/Spidol">
+                                <label for="botolNoda">Botol Noda Cat/Spidol</label>
+                                <input type="number" id="jumlahBotolNoda" name="jumlahBotolNoda" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rejectLeakTester" name="rejectKosong" value="Reject Leak Tester">
+                                <label for="rejectLeakTester">Reject Leak Tester</label>
+                                <input type="number" id="jumlahRejectLeakTester" name="jumlahRejectLeakTester" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reject Visual Isi Section -->
+                <div class="reject-section">
+                    <div class="section-header" onclick="toggleRejectSection('isi')">
+                        <h3 class="section-title">🍾 Reject Visual Isi</h3>
+                        <span class="toggle-icon" id="iconIsi">▼</span>
+                    </div>
+                    <div class="checkbox-container" id="containerIsi">
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="volumeKurang" name="rejectIsi" value="Volume Kurang">
+                                <label for="volumeKurang">Volume Kurang</label>
+                                <input type="number" id="jumlahVolumeKurang" name="jumlahVolumeKurang" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="fbKotorAir" name="rejectIsi" value="FB Kotor Air">
+                                <label for="fbKotorAir">FB Kotor Air</label>
+                                <input type="number" id="jumlahFbKotorAir" name="jumlahFbKotorAir" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tanpaCap" name="rejectIsi" value="Tanpa Cap">
+                                <label for="tanpaCap">Tanpa Cap</label>
+                                <input type="number" id="jumlahTanpaCap" name="jumlahTanpaCap" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tanpaCoding" name="rejectIsi" value="Tanpa Coding">
+                                <label for="tanpaCoding">Tanpa Coding</label>
+                                <input type="number" id="jumlahTanpaCoding" name="jumlahTanpaCoding" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="afkir" name="rejectIsi" value="Afkir">
+                                <label for="afkir">Afkir</label>
+                                <input type="number" id="jumlahAfkir" name="jumlahAfkir" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pecahPacking" name="rejectIsi" value="Pecah Packing">
+                                <label for="pecahPacking">Pecah Packing</label>
+                                <input type="number" id="jumlahPecahPacking" name="jumlahPecahPacking" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pecahConveyor" name="rejectIsi" value="Pecah Conveyor">
+                                <label for="pecahConveyor">Pecah Conveyor</label>
+                                <input type="number" id="jumlahPecahConveyor" name="jumlahPecahConveyor" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="botolKotor" name="rejectIsi" value="Botol Kotor">
+                                <label for="botolKotor">Botol Kotor</label>
+                                <input type="number" id="jumlahBotolKotor" name="jumlahBotolKotor" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pecahLoading" name="rejectIsi" value="Pecah Loading">
+                                <label for="pecahLoading">Pecah Loading</label>
+                                <input type="number" id="jumlahPecahLoading" name="jumlahPecahLoading" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                            
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="capRusuk" name="rejectIsi" value="Cap Rusuk">
+                                <label for="capRusuk">Cap Rusuk</label>
+                                <input type="number" id="jumlahCapRusuk" name="jumlahCapRusuk" min="0" placeholder="PC" class="jumlah-input" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="spv">Nama SPV <span class="required">*</span></label>
+                        <input type="text" id="spv" name="spv" placeholder="Nama Supervisor" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="petugas">Nama Petugas/VC <span class="required">*</span></label>
+                        <input type="text" id="petugas" name="petugas" placeholder="Nama Visual Controller" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="keterangan">Keterangan Tambahan</label>
+                    <textarea id="keterangan" name="keterangan" placeholder="Keterangan tambahan (opsional)"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    💾 Simpan Data Reject
+                </button>
+                
+                <!-- Debug Buttons -->
+                <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button type="button" onclick="testToggle()" style="padding: 8px 12px; background: #f59e0b; color: white; border: none; border-radius: 5px; font-size: 12px;">
+                        🧪 Test Toggle
+                    </button>
+                    <button type="button" onclick="debugInputs()" style="padding: 8px 12px; background: #dc2626; color: white; border: none; border-radius: 5px; font-size: 12px;">
+                        🔍 Debug Inputs
+                    </button>
+                    <button type="button" onclick="forceEnableAll()" style="padding: 8px 12px; background: #059669; color: white; border: none; border-radius: 5px; font-size: 12px;">
+                        ⚡ Force Enable All
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Debug Functions
+        function testToggle() {
+            alert('JavaScript berfungsi! Sekarang coba klik menu Reject Visual Kosong atau Isi');
+            console.log('Test toggle clicked');
+        }
+        
+        function debugInputs() {
+            console.clear();
+            console.log('=== DEBUG INPUTS ===');
+            
+            const allInputs = document.querySelectorAll('.jumlah-input');
+            console.log('Total inputs found:', allInputs.length);
+            
+            allInputs.forEach((input, index) => {
+                console.log(`Input ${index + 1}:`);
+                console.log('  ID:', input.id);
+                console.log('  Disabled:', input.disabled);
+                console.log('  Value:', input.value);
+                console.log('  Display:', window.getComputedStyle(input).display);
+                console.log('  Visibility:', window.getComputedStyle(input).visibility);
+                console.log('---');
+            });
+            
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            console.log('Total checkboxes found:', checkboxes.length);
+            
+            checkboxes.forEach((cb, index) => {
+                console.log(`Checkbox ${index + 1}:`);
+                console.log('  ID:', cb.id);
+                console.log('  Checked:', cb.checked);
+                console.log('  Name:', cb.name);
+                console.log('---');
+            });
+            
+            alert('Check console for debug info');
+        }
+        
+        function forceEnableAll() {
+            const allInputs = document.querySelectorAll('.jumlah-input');
+            let count = 0;
+            
+            allInputs.forEach(input => {
+                input.disabled = false;
+                input.removeAttribute('disabled');
+                input.style.backgroundColor = '#ffffff';
+                input.style.border = '2px solid #1e40af';
+                input.style.opacity = '1';
+                input.style.pointerEvents = 'auto';
+                input.readOnly = false;
+                count++;
+            });
+            
+            alert(`${count} inputs telah diaktifkan! Coba ketik angka di input manapun.`);
+            console.log('Force enabled all inputs');
+        }
+        
+        // Backup toggle function jika yang di script.js tidak berfungsi
+        function toggleRejectSection(section) {
+            console.log('Backup toggle called for:', section);
+            
+            const container = document.getElementById(`container${section.charAt(0).toUpperCase() + section.slice(1)}`);
+            const icon = document.getElementById(`icon${section.charAt(0).toUpperCase() + section.slice(1)}`);
+            
+            if (!container || !icon) {
+                console.error('Element tidak ditemukan:', container, icon);
+                return;
+            }
+            
+            if (container.style.display === 'none' || container.style.display === '') {
+                container.style.display = 'block';
+                container.classList.add('show');
+                icon.textContent = '▲';
+                icon.classList.add('rotated');
+                
+                // Auto-enable semua input dalam container ini
+                const inputs = container.querySelectorAll('.jumlah-input');
+                inputs.forEach(input => {
+                    input.disabled = false;
+                    input.removeAttribute('disabled');
+                });
+                
+            } else {
+                container.style.display = 'none';
+                container.classList.remove('show');
+                icon.textContent = '▼';
+                icon.classList.remove('rotated');
+            }
+        }
+        
+        // Force enable all inputs setelah page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const allInputs = document.querySelectorAll('.jumlah-input');
+                allInputs.forEach(input => {
+                    input.disabled = false;
+                    input.removeAttribute('disabled');
+                });
+                console.log('Auto-enabled all inputs on page load');
+            }, 1000);
+        });
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
